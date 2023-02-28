@@ -1,11 +1,10 @@
-const Errors = require('../errors');
-const authService = require('../services/authService');
+const AuthService = require('../services/authService');
 const HTTP_STATUS = require('../constants/httpStatusCode');
 const isDevelopment = process.env.NODE_ENV === 'development';
 
 const registerUser = async (req, res, next) => {
     try {
-        const { token } = await authService.signUp(req.body);
+        const { token } = await AuthService.signUp(req.body);
         res.cookie(process.env.AUTH_COOKIE_NAME, token, {
             httpOnly: true,
             sameSite: isDevelopment ? true : 'none',
@@ -23,7 +22,7 @@ const registerUser = async (req, res, next) => {
 
 const loginUser = async (req, res, next) => {
     try {
-        const { token, user } = await authService.login(req.body);
+        const { token, user } = await AuthService.login(req.body);
         console.log(user);
         res.cookie(process.env.AUTH_COOKIE_NAME, token, {
             httpOnly: true,

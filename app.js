@@ -20,6 +20,9 @@ app.use(cors());
 app.use(express.static('public'));
 
 // Routes
+app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/public/html/index.html');
+});
 app.use('/api', require('./routes'));
 
 app.use(errorHandler);

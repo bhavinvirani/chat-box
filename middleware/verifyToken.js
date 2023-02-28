@@ -11,10 +11,10 @@ const verifyToken = (req, res, next) => {
             if (err) {
                 throw Errors.UnauthorizedError('Invalid Token');
             } else {
-                res.locals.userId = decoded.userId;
+                res.locals.userId = decoded.id;
+                res.locals.name = decoded.name;
                 res.locals.email = decoded.email;
-                res.locals.role = decoded.role;
-                res.locals.roleId = decoded.roleId;
+                res.locals.username = decoded.username;
                 next();
             }
         });

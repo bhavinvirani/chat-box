@@ -1,7 +1,7 @@
 const express = require('express');
 const { authController } = require('../controllers');
-const validateJoi = require('../middleware/joi');
 const { signupSchema, loginSchema } = require('../validation/schema/auth.schema');
+const validateJoi = require('../middleware/joi');
 const router = express.Router();
 
 //* /api/auth
