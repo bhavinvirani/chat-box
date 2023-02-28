@@ -1,5 +1,4 @@
-const Errors = require('.');
-
+const Errors = require('../errors');
 const endpointNotFound = (req, res) => {
     const err = new Errors(404, `Not Found - ${req.originalUrl}`);
     res.status(err.statusCode).json({
